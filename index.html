@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="esp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeros pasos React</title>
+
+    <!-- Cargat React -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <main id="contenedor-generico" class="container">
+        
+    </main>
+
+    <script type="text/babel">
+        const nombre = "Manny";
+        const Titulo = <h1>Hola soy {nombre}! :D</h1>;
+        const divMain = document.querySelector("#contenedor-generico");
+
+        ReactDOM.render(Titulo, divMain);
+
+        // Pruebas de funcion flecha
+        const PERSONAJE = (nombre) => ({
+            uid: 'ABC123',
+            nombre: nombre
+        });
+        console.table(PERSONAJE('mannyGL'));
+    </script>
+</body>
+</html>

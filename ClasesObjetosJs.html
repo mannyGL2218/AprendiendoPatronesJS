@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Clases y objetos</title>
+</head>
+<body>
+    <div id="contenedor"></div>
+
+    <script>
+        //! Clase tradicional (js moderno)
+        class muestraTitulo{
+            constructor(titulo=""){
+                this.titulo = titulo;
+            }
+            dibujaTitulo(unContenedor = document.getElementsByTagName("body")[0]){
+                unContenedor.innerHTML = `<h1>${this.titulo}</h1>`+unContenedor.innerHTML;
+            }
+        }
+        const contenedor = document.getElementById("contenedor");
+        const titulo = new muestraTitulo("Hola Mundo");
+        titulo.dibujaTitulo(contenedor);
+        //! Clase funcion (js tradicional)
+        function muestraTitulo2(titulo=""){
+            this.titulo  =  titulo;
+            this.dibujaTitulo = (unContenedor = document.getElementsByTagName("body")[0]) => {
+                unContenedor.innerHTML = `<h1>${this.titulo}</h1>`+unContenedor.innerHTML;
+            }
+        }
+        const titulo2 = new muestraTitulo2("Hola Mundo2");
+        titulo2.dibujaTitulo(contenedor);
+    </script>
+</body>
+</html>

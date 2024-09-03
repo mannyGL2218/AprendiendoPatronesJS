@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herencia</title>
+</head>
+<body>
+    <div id="contenedor"></div>
+    
+    <script>
+        //! Clase tradicional (js moderno)
+        class Guia{
+            constructor(numeroGuia="", consecutivo=0){
+                this.numeroGuia = numeroGuia;
+                this.consecutivo = consecutivo;
+            }
+            esGuiaUnica(){
+                return this.numeroGuia.startsWith("7");
+            }
+            guiaJsonString(){
+                return `{"numeroGuia":"${this.numeroGuia}","consecutivo":${this.consecutivo}}`;
+            }
+        }
+        class GuiaMexpost extends  Guia{
+            constructor(numeroGuia="", consecutivo=0, origen="desconocido"){
+                super(numeroGuia, consecutivo);
+                this.origen = origen;
+            }
+            esGuiaUnica(){
+                // valor anterior
+                //super().esGuiaUnica();
+                return true;
+            }
+        }
+
+        const contenedor = document.getElementById("contenedor");
+        const guiaEparcel = new Guia("1000121212",1);
+        const guiaMex = new GuiaMexpost("MX1000000001",1, "sepomex");
+
+        contenedor.innerHTML += `<h1>${guiaEparcel.guiaJsonString()}</h1>`;
+        contenedor.innerHTML += `<h2>${guiaEparcel.esGuiaUnica()}</h2>`;
+        contenedor.innerHTML += `<h1>${guiaMex.guiaJsonString()}</h1>`;
+        contenedor.innerHTML += `<h2>${guiaMex.origen}</h2>`;
+        contenedor.innerHTML += `<h2>${guiaMex.esGuiaUnica()}</h2>`;
+    </script>
+</body>
+</html>
